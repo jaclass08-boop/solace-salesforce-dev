@@ -1,0 +1,41 @@
+name: Validate Salesforce Deployment
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: solace-dev-org
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history, needed for git diff against main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate to org
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > ./SFDX_AUTH_URL.txt
+          sf org login sfdx-url --sfdx-url-file ./SFDX_AUTH_URL.txt --alias targetOrg --set-default
+          rm ./SFDX_AUTH_URL.txt
+
+      - name: Validate deployment
+        run: |
+          sf project deploy validate \
+            --target-org targetOrg \
+            --test-level RunLocalTests \
+            --wait 30

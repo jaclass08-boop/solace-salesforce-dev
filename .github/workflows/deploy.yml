@@ -1,0 +1,40 @@
+name: Deploy Salesforce to Org
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: solace-dev-org
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate to org
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > ./SFDX_AUTH_URL.txt
+          sf org login sfdx-url --sfdx-url-file ./SFDX_AUTH_URL.txt --alias targetOrg --set-default
+          rm ./SFDX_AUTH_URL.txt
+
+      - name: Deploy to org
+        run: |
+          sf project deploy start \
+            --target-org targetOrg \
+            --test-level RunLocalTests \
+            --wait 30
