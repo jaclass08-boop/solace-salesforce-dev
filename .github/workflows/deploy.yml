@@ -36,5 +36,6 @@ jobs:
         run: |
           sf project deploy start \
             --target-org targetOrg \
+            --source-dir force-app \
             --test-level RunLocalTests \
             --wait 30
