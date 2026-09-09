@@ -72,14 +72,28 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <searchLayouts>
-        <customTabListAdditionalFields>PlatformName</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PrimaryObject</customTabListAdditionalFields>
         <customTabListAdditionalFields>DataSpace</customTabListAdditionalFields>
-        <customTabListAdditionalFields>TargetStatus</customTabListAdditionalFields>
-        <searchResultsAdditionalFields>PlatformName</searchResultsAdditionalFields>
+        <customTabListAdditionalFields>CreatedBy</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CreatedDate</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LastModifiedDate</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>PrimaryObject</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>DataSpace</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CreatedBy</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CreatedDate</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LastModifiedDate</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PrimaryObject</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>DataSpace</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CreatedBy</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CreatedDate</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LastModifiedDate</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>PrimaryObject</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>DataSpace</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>TargetStatus</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CreatedBy</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CreatedDate</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LastModifiedDate</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
